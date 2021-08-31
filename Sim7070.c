@@ -391,6 +391,19 @@ uint8_t Sim7070_UpdateCSQ(uint8_t* CSQ_Values){
 
 	return CSQ_UPDATE_SUCCESS;
 }
+uint8_t Sim7070_GPS(uint8_t* buffer){
+
+	uint8_t status;
+	uint8_t temp[50] = {0};
+
+	status = Sim7600_ComandoConResp("AT+CGNSPWR=1\r\n", "OK:", NULL); //Empezar GPS
+	status = Sim7600_ComandoConResp("AT+CGNSINF\r\n", "+CGNSINF:", temp);//Obtiene la locaclizacion del modulo
+	if(status != EXPECTED_RESPONSE)
+			return GPS_INFO_ERROR;
+	strncpy(buffer, temp + 11, 35); //Extraer la fecha y hora de la respuesta AT
+
+	return GPS_SUCCESS;
+}
 
 void Sim7070_Status_Handler(uint8_t status){
 

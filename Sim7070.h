@@ -58,7 +58,7 @@
 #define MODE_SELECTION_ERROR	40
 #define SYSTEM_INFO_ERROR		41
 #define CSQ_UPDATE_ERROR		42
-
+#define GPS_INFO_ERROR			43
 
 
 
@@ -79,6 +79,7 @@
 #define IMAGE_POST_SUCCESS		62
 #define OPERATOR_CONNECTED_SUCCESS 63
 #define CSQ_UPDATE_SUCCESS      64
+#define GPS_SUCCESS				65
 
 
 /*----------------- TIPO POST -----------------*/ //Macros para definir el tipo de POST
